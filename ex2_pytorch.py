@@ -23,28 +23,7 @@ print('Using device: %s'%device)
 # Hyper-parameters
 #--------------------------------
 input_size = 32 * 32 * 3
-'''
-    REPORT about hidden_size:
-    Adding the second layer:
-        With the default hidden size = [50], the model accuracy was 51.9% on the validation set with loss 1.35
-        Adding another later of of dimensionality equal to 25, [50,25], did not improve the performance of the model, but it did lower to 50.5 with loss 1.38
-        Similarly, adding another bigger layer (dim = 100) so that hidden_size = [100, 50], made the accuracy lower to 50.8 with loss = 1.18
-        Adding another layer similar to the original (dim = 60, hidden_size = [60,50]) resulted in an accuracy equal to 51.7% with loss = 1.35
-        Adding a much bigger layer (dim = 1000, hidden_size = [1000, 50]) finally improved the accuracy on the validation to 52.6 with a loss = 1.12
-    Adding the third layer:
-        Interested about the last result, I added another layer as first layer with a much bigger size compared to the second.
-        I chose dim=20000 so that hidden_size = [20000, 1000, 50]. This did not improve the performance of the model, and resulted in a total validation accuracy equal to 50.5 with loss=1.34
-        On my second attempt of adding a third layer, I added a layer in front of the last one with dim=3000, so that hidden_size = [3000, 1000, 50]. This worsen the model a lot with accuracy on the validation < 10%. I think this overfits the training set
-        Then I tried hidden_size = [10000, 1000, 50]. This still caused the model to perform a bit better, with a validation equal to 53.5 and a loss = 1.4. The loss did become bigger, while the validation is improving. This might still overfitting the model.
-        With hidden_size = [5000, 1000, 50] the model's performance was better: validation accuracy = 54.1 and loss = 1.31
-         I tried to change the 5000 to 3000 and 7000 but in both cases the performance was worse, so I remained with 5000.
-    Adding the fourth layer:
-        Adding another much bigger layer (10000) with before resulted in a big loss on performance (<10% on validation).
-        With hidden_size = [5000, 1000, 200, 50] the model started performed poorly, so I interrupted the training.
-        With hidden_size = [5000, 1000, 50, 20] the model performed as above, so I interrupted.
-'''
-
-hidden_size = [256, 128]
+hidden_size = [256, 128] # if I increase the depth of the network, I don't have great results.
 num_classes = 10
 num_epochs = 15 # needs several epochs
 batch_size = 100
